@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
   <%= @user.name %>, <%= @user.email %>
 </p>
 <p>
@@ -6,4 +6,9 @@
 </p>
 <p>
   <%= Time.now %>
-</p>
+</p> -->
+<% provide(:title, @user.name) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
