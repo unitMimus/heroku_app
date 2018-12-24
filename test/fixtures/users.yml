@@ -6,6 +6,11 @@ michael:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+#nonact:
+  #name: Nonactive Me
+  #email: smguy@example.com
+  #password_digest: <%= User.digest('password') %>
+
 archer:
   name: Sterling Archer
   email: duchess@example.gov

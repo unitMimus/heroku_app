@@ -4,6 +4,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @nonactuser = users(:malory)
   end
 
   test "login with invalid information" do
@@ -64,5 +65,19 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # Log in again and verify that the cookie is deleted.
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
+  end
+
+=begin
+  #test for not logging nonactive users
+  test "try to login before activation" do
+    log_in_as(users(:nonact))
+    assert_not is_logged_in?
+  end
+=end
+  #test for not logging nonactive users
+  test "try to login before activation" do
+    @nonactuser.update_columns(activated: nil, activated_at: nil)
+    log_in_as(@nonactuser)
+    assert_not is_logged_in?
   end
 end
