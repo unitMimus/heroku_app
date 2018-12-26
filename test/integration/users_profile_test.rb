@@ -19,4 +19,20 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_match micropost.content, response.body
     end
   end
+
+  test "follow-unfollow display" do
+    michael = users(:michael)
+    archer  = users(:archer)
+    log_in_as(michael)
+    get user_path(archer)
+    assert_not michael.following?(archer)
+    assert_match 'value="Follow"', response.body
+    michael.follow(archer)
+    get user_path(archer)
+    assert michael.following?(archer)
+    assert_match 'value="Unfollow"', response.body
+    assert archer.followers.include?(michael)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
+  end
 end
