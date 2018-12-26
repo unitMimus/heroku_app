@@ -3,9 +3,9 @@ if Rails.env.production?
     config.fog_credentials = {
       # Configuration for Amazon S3
       :provider              => 'AWS',
-      :aws_access_key_id     => ENV['AKIAJUUAETCYVMH2532A'],
-      :aws_secret_access_key => ENV['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']
+      :aws_access_key_id     => 'AKIAJUUAETCYVMH2532A',
+      :aws_secret_access_key => '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'
     }
-    config.fog_directory     =  ENV['arn:aws:s3:::sampapp-bucket']
+    config.fog_directory     =  'arn:aws:s3:::sampapp-bucket'
   end
 end
