@@ -6,6 +6,6 @@ if Rails.env.production?
       :aws_access_key_id     => 'AKIAJUUAETCYVMH2532A',
       :aws_secret_access_key => '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'
     }
-    config.fog_directory     =  'aws:s3:::sampapp-bucket'
+    config.fog_directory     =  'sampapp-bucket'
   end
 end
